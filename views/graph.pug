@@ -1,0 +1,94 @@
+html
+  head
+    title="Catalyst Efficiency"
+    style 
+      include styles.css
+    link(rel="stylesheet",
+         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u",
+         crossorigin="anonymous")
+
+  body
+    head
+      script(src="https://cdn.plot.ly/plotly-latest.min.js")
+    
+    h1#title=graph_title
+
+  div
+    div#popup.hidden
+
+    div#left-container
+      div.box
+        h3="Legend"
+        div.inner-box
+          div(style="height: 30px; margin: 0")
+            div.circle.red-circle
+            ="polycrystalline"
+          div(style="height: 30px; margin: 0")
+            div.circle.orange-circle
+            ="(111) surface"
+          div(style="height: 30px; margin: 0")
+            div.circle.yellow-circle
+            ="other surface orientation"
+      div.box
+        h4
+          span.glyphicon.glyphicon-triangle-bottom.pull-left#toggle-button
+          //- add a delta
+          span(
+            style="font-family: monospace; cursor: pointer; user-select: none"
+            onclick="document.getElementsByClassName('inner-box')[1].classList.toggle('hidden');document.getElementById('toggle-button').classList.toggle('glyphicon-triangle-bottom'); document.getElementById('toggle-button').classList.toggle('glyphicon-triangle-top');"
+          )=equation
+        div.inner-box.hidden
+          form#equation_form.form-horizontal(action="/graph", method="GET")
+            div.row(style="text-align: center")
+              div.col-md-5
+                h3="dE"
+              div.col-md-7
+                h3="coefficient"
+            each parameter, i in parameters
+              div.form-group
+                label.col-md-5.control-label(for="coefficient_input_"+i)=parameter.name
+                div.col-md-7
+                  input.form-control(type="number", name=parameter.name, value=parameter.value)
+            input.btn.btn-block(type="submit", value="UPDATE FORMULA")
+          
+    div#middle-container
+      div#graph(style="width:100%;height:650px;")
+
+    div#right-container
+      div.box
+        h3="Filter By"
+        div.inner-box
+          form(action="/graph", method="GET")
+            div.filter_option
+              input(type="checkbox", name="chem_formula", checked=filters["chem_formula"])
+              ="    chemical formula        "
+              select
+                option="Ag"
+                option="OH"
+                option="C"
+            div.filter_option
+              input(type="checkbox", name="adsorbate", checked=filters["adsorbate"])
+              ="    Adsorbate"
+            div.filter_option
+              input(type="checkbox", name="mpid", checked=filters["mpid"])          
+              ="    MPID"
+            div.filter_option
+              input(type="checkbox", name="miller_top", checked=filters["miller_top"])
+              ="    Miller top"
+            div.filter_option
+              input(type="checkbox", name="coordination", checked=filters["coordination"])
+              ="    Coordination"
+            div(style="height: 20px")
+            div.filter_option
+              input(type="checkbox", name="next_nearest_coord", checked=filters["next_nearest_coord"])
+              ="    Next nearest coordinate"
+            div.filter_option
+              input(type="checkbox", name="neighbor_coord", checked=filters["neighbor_coord"])
+              ="    Neighbor coordination"
+            div.filter_option
+              input(type="checkbox", name="fmax", checked=filters["fmax"])
+              ="    Fmax"
+            input.btn.btn-block(type="submit", value="APPLY FILTER")
+
+  script(src="graph.js")

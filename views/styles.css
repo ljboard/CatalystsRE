@@ -1,0 +1,137 @@
+body {
+    overflow: hidden;
+}
+*, div {
+    font-family: "HelveticaNeue-Light"
+}
+h4, h3 {
+    margin: 0;
+}
+h1 { font-size: 80px !important }
+h3, h1 { margin-top: 0 !important}
+div {
+    font-weight: 100;
+}
+
+#title {
+    margin: 20px auto;
+    padding: 20px;
+    width: 75%;
+    border-bottom: 5px solid darkblue;
+    text-align: center;
+    font-size: 70px;
+    font-weight: 100;
+    color: black;
+}
+
+#popup {
+    position: fixed;
+    top: 250px;
+    left: 30%;
+    width: 40%;
+    z-index: 100;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.3);    
+    padding: 35px;
+    margin-top: 0 !important;
+}
+
+.popup-info {
+    font-size: 20px;
+    z-index: 3;
+}
+
+#left-container, #middle-container, #right-container {
+    top: 150px;
+    position: fixed;
+}
+
+#left-container {
+    left: 0;
+    width: 25%; 
+}
+#middle-container {
+    left: 25%;
+    width: 50%; 
+}
+#right-container {
+    left: 75%;
+    width: 25%; 
+}
+
+.limit{
+    width: 100%;
+    height: 100%;
+    max-height: 675px;
+    overflow: hidden;
+ }
+.limit img{
+   width: 100%;
+   height: 100%;
+ }
+
+label {
+    text-align: left !important
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+}
+
+.filter_option {
+    margin: 10px;
+}
+
+.list-group-item {
+    border: none;
+    border-radius: 0px;
+}
+
+.circle {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    margin-right: 8px;
+    margin-top: 3px;
+}
+
+.red-circle { background-color: red }
+.orange-circle { background-color: orange }
+.yellow-circle { background-color: yellow }
+
+input.btn {
+    font-size: 16px
+}
+
+.inner-box {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    text-align: left
+}
+
+.box {
+    margin: 20px;
+    padding: 10px;
+    background-color: #E1ECF6;
+    border: 2px solid black;    
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+img#molecule {
+    margin-left: 50px;
+    height: 175px;
+    width: 175px;
+    position: absolute;
+    right: 100px;
+    top: 50px;
+    z-index: 2;
+}
