@@ -3,6 +3,12 @@ const app = express()
 app.set('views', './views')
 app.set('view engine', 'pug')
 app.use(express.static('assets'));
+var fs = require('fs');
+var data;
+fs.readFile('./data.js', 'utf8', function (err, input_data) {
+  if (err) throw err;
+  data = JSON.parse(input_data);
+});
 
 const info = {
     graph_title: 'Catalyst Efficiency',
@@ -71,7 +77,7 @@ app.get('/graph*', function(req, res){
         setParameters(req.query);
     }
     info.equation = setEquation()
-    res.render('graph', info)
+    res.render('graph', Object.assign(info, {data: data}))
 }); 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')

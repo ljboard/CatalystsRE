@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index && open http://localhost:8081/graph && node bin/www"
+    "start": "node index"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
     "plotly": "latest",
     "pug": "^2.0.0-rc.4"

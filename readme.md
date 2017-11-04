@@ -5,5 +5,5 @@
 * Run `npm install` to install node modules
 
 ### Run: 
-* Run `node index` to start the server. 
-* Visit `localhost:3000` in your browser to view the app. 
+* Run `npm start` to start the server. 
+* Visit `localhost:3000/graph` in your browser to view the app. 
