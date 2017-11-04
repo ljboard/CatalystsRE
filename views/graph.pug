@@ -8,11 +8,11 @@ html
          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u",
          crossorigin="anonymous")
 
-  body
-    head
-      script(src="https://cdn.plot.ly/plotly-latest.min.js")
-    
-    h1#title=graph_title
+body
+  head
+    script(src="https://cdn.plot.ly/plotly-latest.min.js")
+  
+  h1#title=graph_title
 
   div
     div#popup.hidden
@@ -61,34 +61,34 @@ html
         div.inner-box
           form(action="/graph", method="GET")
             div.filter_option
-              input(type="checkbox", name="chem_formula", checked=filters["chem_formula"])
+              input#chem_formula(type="checkbox", name="chem_formula", checked=filters["chem_formula"])
               ="    chemical formula        "
-              select
-                option="Ag"
-                option="OH"
-                option="C"
+              select#chem_formula_select
+                option(value="Ag")="Ag"
+                option(value="OH")="OH"
+                option(value="C")="C"
             div.filter_option
-              input(type="checkbox", name="adsorbate", checked=filters["adsorbate"])
+              input#adsorbate(type="checkbox", name="adsorbate", checked=filters["adsorbate"])
               ="    Adsorbate"
             div.filter_option
-              input(type="checkbox", name="mpid", checked=filters["mpid"])          
+              input#mpid(type="checkbox", name="mpid", checked=filters["mpid"])          
               ="    MPID"
             div.filter_option
-              input(type="checkbox", name="miller_top", checked=filters["miller_top"])
+              input#miller_top(type="checkbox", name="miller_top", checked=filters["miller_top"])
               ="    Miller top"
             div.filter_option
-              input(type="checkbox", name="coordination", checked=filters["coordination"])
+              input#coordination(type="checkbox", name="coordination", checked=filters["coordination"])
               ="    Coordination"
             div(style="height: 20px")
             div.filter_option
-              input(type="checkbox", name="next_nearest_coord", checked=filters["next_nearest_coord"])
+              input#next_nearest_coord(type="checkbox", name="next_nearest_coord", checked=filters["next_nearest_coord"])
               ="    Next nearest coordinate"
             div.filter_option
-              input(type="checkbox", name="neighbor_coord", checked=filters["neighbor_coord"])
+              input#neighbor_coord(type="checkbox", name="neighbor_coord", checked=filters["neighbor_coord"])
               ="    Neighbor coordination"
             div.filter_option
-              input(type="checkbox", name="fmax", checked=filters["fmax"])
+              input#fmax(type="checkbox", name="fmax", checked=filters["fmax"])
               ="    Fmax"
             input.btn.btn-block(type="submit", value="APPLY FILTER")
 
-  script(src="graph.js")
+  script(src="graph.js" data-input_var="alsdkjaslkdjaslkdj")

@@ -135,3 +135,7 @@ img#molecule {
     top: 50px;
     z-index: 2;
 }
+
+iframe {
+    border: none
+}

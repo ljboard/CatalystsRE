@@ -14,14 +14,14 @@ const info = {
         {"name": "dE(C)", value: 5},
     ], 
     filters: {
-        chem_formula: true,
-        adsorbate: true,
+        chem_formula: false,
+        adsorbate: false,
         mpid: false,
         miller_top: false,
         coordination: false,
         next_nearest_coord: false,
         neighbor_coord: false,
-        fmax: true,
+        fmax: false,
     }
 }
 
