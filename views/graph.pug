@@ -61,34 +61,36 @@ body
         div.inner-box
           form(action="/graph", method="GET")
             div.filter_option
-              input#chem_formula(type="checkbox", name="chem_formula", checked=filters["chem_formula"])
+              input#formula(type="checkbox", name="formula", checked=filters["formula"])
               ="    chemical formula        "
-              select#chem_formula_select
-                option(value="Ag")="Ag"
-                option(value="OH")="OH"
-                option(value="C")="C"
-            div.filter_option
-              input#adsorbate(type="checkbox", name="adsorbate", checked=filters["adsorbate"])
-              ="    Adsorbate"
+              input#formula_input.hidden(type="text", name="chem_formula_input")
             div.filter_option
               input#mpid(type="checkbox", name="mpid", checked=filters["mpid"])          
               ="    MPID"
+              input#mpid_input.hidden(type="text", name="mpid_input")
             div.filter_option
-              input#miller_top(type="checkbox", name="miller_top", checked=filters["miller_top"])
-              ="    Miller top"
+              input#miller(type="checkbox", name="miller", checked=filters["miller"])
+              ="    Miller Index"
+              input#miller_input.hidden(type="text", name="miller_input")
+            div.filter_option
+              input#top(type="checkbox", name="top", checked=filters["top"])
+              ="    Top"
             div.filter_option
               input#coordination(type="checkbox", name="coordination", checked=filters["coordination"])
               ="    Coordination"
+              input#coordination_input.hidden(type="text", name="coordination_input")
             div(style="height: 20px")
             div.filter_option
               input#next_nearest_coord(type="checkbox", name="next_nearest_coord", checked=filters["next_nearest_coord"])
               ="    Next nearest coordinate"
+              input#next_nearest_coord_input.hidden(type="text", name="next_nearest_coord_input")
             div.filter_option
               input#neighbor_coord(type="checkbox", name="neighbor_coord", checked=filters["neighbor_coord"])
               ="    Neighbor coordination"
+              input#neighbor_coord_input.hidden(type="text", name="neighbor_coord_input")
             div.filter_option
               input#fmax(type="checkbox", name="fmax", checked=filters["fmax"])
               ="    Fmax"
-            input.btn.btn-block(type="submit", value="APPLY FILTER")
+              input#fmax_input.hidden(type="text", name="fmax_input")
 
   script(src="graph.js" data-input_var=data)
