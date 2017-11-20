@@ -7,7 +7,6 @@ body {
 h4, h3 {
     margin: 0;
 }
-h1 { font-size: 80px !important }
 h3, h1 { margin-top: 0 !important}
 div {
     font-weight: 100;
@@ -42,22 +41,17 @@ div {
     z-index: 3;
 }
 
-#left-container, #middle-container, #right-container {
+#left-container, #graph-container{
     top: 150px;
     position: fixed;
 }
 
 #left-container {
     left: 0;
-    width: 25%; 
+    width: 400px; 
 }
-#middle-container {
-    left: 25%;
-    width: 50%; 
-}
-#right-container {
-    left: 75%;
-    width: 25%; 
+#graph-container {
+    left: 400px;
 }
 
 .limit{
@@ -75,7 +69,7 @@ label {
     text-align: left !important
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
     width: 20px;
     height: 20px;
     padding-right: 10px;
@@ -83,25 +77,15 @@ input[type="checkbox"] {
 
 .filter_option {
     margin: 10px;
+    border: 1px solid #a4aecc;
+    padding: 5px;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.1);    
 }
 
 .list-group-item {
     border: none;
     border-radius: 0px;
 }
-
-.circle {
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    margin-right: 8px;
-    margin-top: 3px;
-}
-
-.red-circle { background-color: red }
-.orange-circle { background-color: orange }
-.yellow-circle { background-color: yellow }
 
 input.btn {
     font-size: 16px
@@ -112,6 +96,11 @@ input.btn {
     border: 2px solid black;
     padding: 10px;
     text-align: left
+}
+
+.innerbox-header {
+    height: 30px;
+    margin: 0px 20px -15px 20px;
 }
 
 .box {
@@ -138,4 +127,22 @@ img#molecule {
 
 iframe {
     border: none
+}
+
+.d3-tip {
+    background-color: #272727;
+    color: white;
+    padding: 10px;
+}
+
+.d3-popover {
+    background-color: #ffffff;
+    border: 1px solid black;
+    box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.3);    
+    color: "purple";
+    padding: 10px;    
+}
+
+.datapoint {
+    background-color: "red" !important;
 }

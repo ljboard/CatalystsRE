@@ -9,8 +9,8 @@ html
          crossorigin="anonymous")
 
 body
-  head
-    script(src="https://cdn.plot.ly/plotly-latest.min.js")
+  script(src="http://d3js.org/d3.v3.min.js", charset="utf-8")
+  script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js", charset="utf-8")
   
   h1#title=graph_title
 
@@ -19,24 +19,66 @@ body
 
     div#left-container
       div.box
-        h3="Legend"
+        h4
+          span#filter-toggle.glyphicon.glyphicon-triangle-bottom.pull-left
+        //- add a delta
+        h3(
+          style="cursor: pointer; user-select: none"
+          onclick="document.getElementsByClassName('inner-box')[0].classList.toggle('hidden');document.getElementById('filter-toggle').classList.toggle('glyphicon-triangle-bottom'); document.getElementById('filter-toggle').classList.toggle('glyphicon-triangle-top');"
+        )="Filter By"
         div.inner-box
-          div(style="height: 30px; margin: 0")
-            div.circle.red-circle
-            ="polycrystalline"
-          div(style="height: 30px; margin: 0")
-            div.circle.orange-circle
-            ="(111) surface"
-          div(style="height: 30px; margin: 0")
-            div.circle.yellow-circle
-            ="other surface orientation"
+          form(action="/graph", method="GET")
+            div.innerbox-header
+              span.glyphicon.glyphicon-search.pull-left
+              span.glyphicon.glyphicon-pencil.pull-right
+            div.filter_option
+              input#formula(type="checkbox", name="formula", checked=filters["formula"])
+              ="    chemical formula        "
+              input.pull-right(type="radio", name="color", value="formula")
+              input#formula_input.hidden(type="text", name="chem_formula_input")
+            div.filter_option
+              input#mpid(type="checkbox", name="mpid", checked=filters["mpid"])          
+              ="    MPID"
+              input.pull-right(type="radio", name="color", value="mpid")
+              input#mpid_input.hidden(type="text", name="mpid_input")
+            div.filter_option
+              input#miller(type="checkbox", name="miller", checked=filters["miller"])
+              ="    Miller Index"
+              input.pull-right(type="radio", name="color", value="miller")
+              input#miller_input.hidden(type="text", name="miller_input")
+            div.filter_option
+              input#top(type="checkbox", name="top", checked=filters["top"])
+              ="    Top"
+              input.pull-right(type="radio", name="color", value="top")
+            div.filter_option
+              input#coordination(type="checkbox", name="coordination", checked=filters["coordination"])
+              ="    Coordination"
+              input.pull-right(type="radio", name="color", value="coordination")
+              input#coordination_input.hidden(type="text", name="coordination_input")
+            div(style="height: 20px")
+            div.filter_option
+              input#next_nearest_coord(type="checkbox", name="next_nearest_coord", checked=filters["next_nearest_coord"])
+              ="    Next nearest coordinate"
+              input.pull-right(type="radio", name="color", value="next_nearest_coord")
+              input#next_nearest_coord_input.hidden(type="text", name="next_nearest_coord_input")
+            div.filter_option
+              input#neighbor_coord(type="checkbox", name="neighbor_coord", checked=filters["neighbor_coord"])
+              ="    Neighbor coordination"
+              input.pull-right(type="radio", name="color", value="neighbor_coord")
+              input#neighbor_coord_input.hidden(type="text", name="neighbor_coord_input")
+            div.filter_option
+              input#fmax(type="checkbox", name="fmax", checked=filters["fmax"])
+              ="    Fmax"
+              input.pull-right(type="radio", name="color", value="fmax")
+              input#fmax_input.hidden(type="text", name="fmax_input")
+
       div.box
         h4
-          span.glyphicon.glyphicon-triangle-bottom.pull-left#toggle-button
+          span#formula-toggle.glyphicon.glyphicon-triangle-bottom.pull-left
           //- add a delta
           span(
             style="font-family: monospace; cursor: pointer; user-select: none"
-            onclick="document.getElementsByClassName('inner-box')[1].classList.toggle('hidden');document.getElementById('toggle-button').classList.toggle('glyphicon-triangle-bottom'); document.getElementById('toggle-button').classList.toggle('glyphicon-triangle-top');"
+            onclick="document.getElementsByClassName('inner-box')[1].classList.toggle('hidden');document.getElementById('formula-toggle').classList.toggle('glyphicon-triangle-bottom'); document.getElementById('formula-toggle').classList.toggle('glyphicon-triangle-top');"
           )=equation
         div.inner-box.hidden
           form#equation_form.form-horizontal(action="/graph", method="GET")
@@ -50,47 +92,9 @@ body
                 label.col-md-5.control-label(for="coefficient_input_"+i)=parameter.name
                 div.col-md-7
                   input.form-control(type="number", name=parameter.name, value=parameter.value)
-            input.btn.btn-block(type="submit", value="UPDATE FORMULA")
+            input.btn.btn-block.btn-info(type="submit", value="UPDATE FORMULA")
           
-    div#middle-container
-      div#graph(style="width:100%;height:650px;")
-
-    div#right-container
-      div.box
-        h3="Filter By"
-        div.inner-box
-          form(action="/graph", method="GET")
-            div.filter_option
-              input#formula(type="checkbox", name="formula", checked=filters["formula"])
-              ="    chemical formula        "
-              input#formula_input.hidden(type="text", name="chem_formula_input")
-            div.filter_option
-              input#mpid(type="checkbox", name="mpid", checked=filters["mpid"])          
-              ="    MPID"
-              input#mpid_input.hidden(type="text", name="mpid_input")
-            div.filter_option
-              input#miller(type="checkbox", name="miller", checked=filters["miller"])
-              ="    Miller Index"
-              input#miller_input.hidden(type="text", name="miller_input")
-            div.filter_option
-              input#top(type="checkbox", name="top", checked=filters["top"])
-              ="    Top"
-            div.filter_option
-              input#coordination(type="checkbox", name="coordination", checked=filters["coordination"])
-              ="    Coordination"
-              input#coordination_input.hidden(type="text", name="coordination_input")
-            div(style="height: 20px")
-            div.filter_option
-              input#next_nearest_coord(type="checkbox", name="next_nearest_coord", checked=filters["next_nearest_coord"])
-              ="    Next nearest coordinate"
-              input#next_nearest_coord_input.hidden(type="text", name="next_nearest_coord_input")
-            div.filter_option
-              input#neighbor_coord(type="checkbox", name="neighbor_coord", checked=filters["neighbor_coord"])
-              ="    Neighbor coordination"
-              input#neighbor_coord_input.hidden(type="text", name="neighbor_coord_input")
-            div.filter_option
-              input#fmax(type="checkbox", name="fmax", checked=filters["fmax"])
-              ="    Fmax"
-              input#fmax_input.hidden(type="text", name="fmax_input")
+    div#graph-container
+      div#graph
 
   script(src="graph.js" data-input_var=data)

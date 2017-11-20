@@ -2,10 +2,10 @@ const express = require('express')
 const app = express()
 app.set('views', './views')
 app.set('view engine', 'pug')
-app.use(express.static('assets'));
+app.use(express.static('graph'));
 var fs = require('fs');
 var data;
-fs.readFile('./data.js', 'utf8', function (err, input_data) {
+fs.readFile('./data.json', 'utf8', function (err, input_data) {
   if (err) throw err;
   data = JSON.parse(input_data);
 });
@@ -13,11 +13,11 @@ fs.readFile('./data.js', 'utf8', function (err, input_data) {
 const info = {
     graph_title: 'Catalyst Efficiency',
     parameters: [
-        {"name": "dE(O)", value: 1},
+        {"name": "dE(O)", value: 2},
         {"name": "dE(CO)", value: 0},
         {"name": "dE(OH)", value: -1},
-        {"name": "dE(H)", value: 2},
-        {"name": "dE(C)", value: 5},
+        {"name": "dE(H)", value: 0},
+        {"name": "dE(C)", value: 0},
     ], 
     filters: {
         chem_formula: false,
