@@ -12,28 +12,37 @@ body
   script(src="http://d3js.org/d3.v3.min.js", charset="utf-8")
   script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js", charset="utf-8")
   
-  h1#title=graph_title
+  div#popup.hidden
+  div#sidebar.pull-left
+    div#sidebar-top
+      h1#title
+        ="CATALYST"
+        span(style="color: #ACD269")=" EFFICIENCY"
 
-  div
-    div#popup.hidden
-
-    div#left-container
-      div.box
-        h4
-          span#filter-toggle.glyphicon.glyphicon-triangle-bottom.pull-left
-        //- add a delta
-        h3(
-          style="cursor: pointer; user-select: none"
-          onclick="document.getElementsByClassName('inner-box')[0].classList.toggle('hidden');document.getElementById('filter-toggle').classList.toggle('glyphicon-triangle-bottom'); document.getElementById('filter-toggle').classList.toggle('glyphicon-triangle-top');"
-        )="Filter By"
+    div#sidebar-bottom
+      div.box.opened
+        h3(style="cursor: pointer; user-select: none",
+            onclick="document.getElementsByClassName('inner-box')[0].classList.toggle('hidden');\
+                     document.getElementsByClassName('box')[0].classList.toggle('opened');")
+            ="CUSTOMIZATIONS"
         div.inner-box
+          div.filter_option
+            input#volcano(type="checkbox", name="volcano", checked="checked")
+            ="    volcano plot view"
+    
+      div.box
+        h3(style="cursor: pointer; user-select: none",
+            onclick="document.getElementsByClassName('inner-box')[1].classList.toggle('hidden');\
+                      document.getElementsByClassName('box')[1].classList.toggle('opened');")
+          ="FILTERS"
+        div.inner-box.hidden
           form(action="/graph", method="GET")
             div.innerbox-header
               span.glyphicon.glyphicon-search.pull-left
               span.glyphicon.glyphicon-pencil.pull-right
             div.filter_option
               input#formula(type="checkbox", name="formula", checked=filters["formula"])
-              ="    chemical formula        "
+              ="    chemical formula"
               input.pull-right(type="radio", name="color", value="formula")
               input#formula_input.hidden(type="text", name="chem_formula_input")
             div.filter_option
@@ -73,14 +82,24 @@ body
               input#fmax_input.hidden(type="text", name="fmax_input")
 
       div.box
-        h4
-          span#formula-toggle.glyphicon.glyphicon-triangle-bottom.pull-left
-          //- add a delta
+        h3(style="cursor: pointer; user-select: none",
+            onclick="document.getElementsByClassName('inner-box')[2].classList.toggle('hidden');\
+                          document.getElementsByClassName('box')[2].classList.toggle('opened');")
+          ="SAVED POINTS"
+        div.inner-box.hidden
+          p#resetPoints.hidden="Click to reset"
+          ul#selectedPoints(style="padding-top: 10px;")
+            p="Click on a point to add it to your list."
+
+      div.box
+        h3(style="cursor: pointer; user-select: none",
+            onclick="document.getElementsByClassName('inner-box')[3].classList.toggle('hidden');\
+                          document.getElementsByClassName('box')[3].classList.toggle('opened');")
+          ="EQUATION"
+        div.inner-box.hidden
           span(
             style="font-family: monospace; cursor: pointer; user-select: none"
-            onclick="document.getElementsByClassName('inner-box')[1].classList.toggle('hidden');document.getElementById('formula-toggle').classList.toggle('glyphicon-triangle-bottom'); document.getElementById('formula-toggle').classList.toggle('glyphicon-triangle-top');"
           )=equation
-        div.inner-box.hidden
           form#equation_form.form-horizontal(action="/graph", method="GET")
             div.row(style="text-align: center")
               div.col-md-5
@@ -93,8 +112,7 @@ body
                 div.col-md-7
                   input.form-control(type="number", name=parameter.name, value=parameter.value)
             input.btn.btn-block.btn-info(type="submit", value="UPDATE FORMULA")
-          
-    div#graph-container
-      div#graph
 
-  script(src="graph.js" data-input_var=data)
+  div#graph.pull-left
+
+  script(src="graph.js", data=data)

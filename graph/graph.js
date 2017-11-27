@@ -2,19 +2,31 @@ GRAPH = document.getElementById('graph');
 var scripts = document.getElementsByTagName('script');
 var lastScript = scripts[scripts.length-1];
 var scriptName = lastScript;
-var data = JSON.parse(scriptName.getAttribute('data-input_var'));
+var data = JSON.parse(scriptName.getAttribute('data'));
+for (var i = 0; i < data.length; i++) {
+  data[i]["offset"] = Math.random();
+}
 var currentData = data;
-var allColors = []
+var volcanoMode = true;
+var minimumValue = 0.5;
+var allColors = [];
 for (var i = 0; i < data.length; i++) {
   allColors.push("rgb(" + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + ")")
 }
+var favoritePoints = {};
 
 /*************************************************************/
 //                         SELECTORS
 /*************************************************************/
 var selectEnergy  = v => { if (v["results"]) return v["results"]["energy"]; }
 var selectX = v => selectEnergy(v) % 3;
-var selectY = v => Math.abs(selectX(v) + Math.random()/3);
+var selectY = v => {
+  if (!volcanoMode) {
+    return v.offset + 2;
+  } else {
+    return Math.abs(selectX(v) + v.offset/3);
+  }
+};
 var selectFormula = v => v["processed_data"]["calculation_info"]["formula"];
 var selectMPID    = v => v["processed_data"]["calculation_info"]["mpid"];
 var selectMiller  = v => String(v["processed_data"]["calculation_info"]["miller"][0]);
@@ -136,6 +148,18 @@ var setFilterEvents = () => {
 
 setFilterEvents();
 
+document.getElementById("volcano").onchange = () => {
+  volcanoMode = document.getElementById("volcano").checked;
+  drawGraph();
+}
+
+document.getElementById("resetPoints").onclick = () => {
+  favoritePoints = {};
+  document.getElementById("selectedPoints").innerHTML = renderSavedPoints();
+  drawGraph();
+}
+
+
 /*************************************************************/
 //                         COLORS
 /*************************************************************/
@@ -212,7 +236,25 @@ for (var i = 0; i < colorButtons.length; i++) {
 /*************************************************************/
 //                     GRAPH GENERATION
 /*************************************************************/
-var drawGraph = () => {  
+var renderSavedPoints = () => {
+  document.getElementById("resetPoints").classList.remove("hidden");
+  var innerHTML = "";
+  
+  var ids = Object.keys(favoritePoints);
+  var point;
+  for (var i = 0; i < ids.length; i++) {
+    point = favoritePoints[ids[i]];
+    console.log(point)
+    innerHTML += ("<li>" + selectFormula(point) + "</li>");
+  }
+  if (innerHTML === "") {
+    innerHTML = "<p>Click on a point to add it to your list.</p>";
+    document.getElementById("resetPoints").classList.add("hidden");    
+  }
+  return innerHTML;
+}
+
+var drawGraph = () => {
   currentData = data;
   for (var filter in filters) {
     if(filters[filter]) {
@@ -254,14 +296,15 @@ var drawGraph = () => {
 
   for (var i = 0; i < currentData.length; i++) {
     v = currentData[i];
-    v["color"] = colorSettings.colors[selectColorFilter(v)]
+    v["color"] = colorSettings.colors[selectColorFilter(v)];
+    v["offset"] = currentData[i].offset;
   }
 
   /****************************************************************/
   /*                              D3                              */
   /****************************************************************/
-  const width = window.innerWidth - 450;
-  const height = window.innerHeight - 150;
+  const width = window.innerWidth - 320;
+  const height = window.innerHeight - 20;
 
   const xRange = [
     d3.min(currentData, d => selectX(d)) - .2,
@@ -269,7 +312,7 @@ var drawGraph = () => {
   ];
 
   const yRange = [
-    d3.min(currentData, d => selectY(d)) - .2,
+    d3.min(currentData, d => selectY(d)),
     d3.max(currentData, d => selectY(d)) + .2
   ];
 
@@ -287,7 +330,16 @@ var drawGraph = () => {
   var svg = d3.select('#graph')
     .append('svg')        // create an <svg> element
     .attr('width', width) // set its dimentions
-    .attr('height', height);
+    .attr('height', height)
+    .attr('margin', 10);
+
+    svg.append("rect")
+    .attr("x", scaleX(minimumValue))
+    .attr("y", 0)
+    .attr("width", 20)
+    .attr("height", "100%")
+    .attr("fill", "yellow")
+
 
   var x = d3.scale.linear()
     .domain(xRange)
@@ -328,7 +380,7 @@ var drawGraph = () => {
     .call(xAxis);
   
   var xAxisHeight = document.getElementsByClassName("x-axis")[0].getBoundingClientRect().top - 
-    document.getElementById("graph").getBoundingClientRect().top + 50;
+    document.getElementById("graph").getBoundingClientRect().top;
 
   svg.append('g')
     .attr('class', 'y-axis') 
@@ -341,19 +393,35 @@ var drawGraph = () => {
   var datapointObj = datapoints.append("circle")
     .attr("cx", v => scaleX(selectX(v)))
     .attr("cy", v => {
-      return scaleY(selectY(v))
+      return scaleY(selectY(v)) + 10
     })
-    .attr("r", 5)
+    .attr("r", v => {
+      if (favoritePoints.hasOwnProperty(v._id)) {
+        return 2;
+      } else {
+        return 5;
+      }
+    })
     .attr("fill", v => v.color)
-    // .attr("opacity", .5)
+    .attr("cursor", "pointer")
     .on("mouseover", popover.show)
     .on("mouseout", popover.hide)
+    .on("click", d => {
+      popover.hide();
+      if (!favoritePoints.hasOwnProperty(d._id)) {
+        favoritePoints[d._id] = d;
+      }
+      document.getElementById("selectedPoints").innerHTML = renderSavedPoints();
+      document.getElementsByClassName('inner-box')[2].classList.remove('hidden');
+      document.getElementsByClassName('box')[2].classList.add('opened');
+      drawGraph()
+    })
     
   svg.append("text")
     .attr("class", "x-axis-label")
     .attr("text-anchor", "middle") 
     .attr("x", width/2)
-    .attr("y", xAxisHeight) 
+    .attr("y", xAxisHeight + 40) 
     .attr("font-size", 20)
     .text("Gh (eV)");
 
