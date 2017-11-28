@@ -29,6 +29,10 @@ body
           div.filter_option
             input#volcano(type="checkbox", name="volcano", checked="checked")
             ="    volcano plot view"
+          div.filter_option
+            ="Minimum: "
+            span#minimum_label=""
+            input#minumum(type="range", min="-3", max="3", step="0.01", value="1.2")
     
       div.box
         h3(style="cursor: pointer; user-select: none",
@@ -75,11 +79,6 @@ body
               ="    Neighbor coordination"
               input.pull-right(type="radio", name="color", value="neighbor_coord")
               input#neighbor_coord_input.hidden(type="text", name="neighbor_coord_input")
-            div.filter_option
-              input#fmax(type="checkbox", name="fmax", checked=filters["fmax"])
-              ="    Fmax"
-              input.pull-right(type="radio", name="color", value="fmax")
-              input#fmax_input.hidden(type="text", name="fmax_input")
 
       div.box
         h3(style="cursor: pointer; user-select: none",

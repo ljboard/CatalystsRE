@@ -8,7 +8,7 @@ for (var i = 0; i < data.length; i++) {
 }
 var currentData = data;
 var volcanoMode = true;
-var minimumValue = 0.5;
+var minimumValue = document.getElementById("minumum").value;
 var allColors = [];
 for (var i = 0; i < data.length; i++) {
   allColors.push("rgb(" + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + ")")
@@ -35,7 +35,7 @@ var selectNextnearestcoordination = v => v["processed_data"]["fp_final"]["nextne
 var selectFmax    = v => String(v["results"]["fmax"]);
 var selectNeighborCoord = v => {
   if (v["processed_data"]["fp_final"]["neighborcoord"]) 
-    return v["processed_data"]["fp_final"]["neighborcoord"][0];
+    return v["processed_data"]["fp_final"]["neighborcoord"];
 }
 var selectCoordination = v =>  v["processed_data"]["fp_final"]["coordination"];
 var selectAdsorbates   = v => // returns a list
@@ -63,7 +63,12 @@ var updateFilter = (filterName, select) => {
   if(document.getElementById(filterName).checked) {
     input.classList.remove("hidden");
     var filter = data => { return data.filter(v => {
-      return select(v) === text;
+      if (filterName === "neighbor_coord") {
+        if (select(v)) return select(v).includes(text);
+        else return false;
+      } else {
+        return select(v) === text;        
+      }
     }); };
     filters[filterName] = filter;
   } else {
@@ -136,14 +141,6 @@ var setFilterEvents = () => {
   document.getElementById("neighbor_coord_input").onkeyup = () => {
     updateFilter("neighbor_coord", selectNeighborCoord);  
   }
-  
-  document.getElementById("fmax").onclick = () => {
-    updateFilter("fmax", selectFmax);  
-  }
-  
-  document.getElementById("fmax_input").onkeyup = () => {
-    updateFilter("fmax", selectFmax);    
-  }
 }
 
 setFilterEvents();
@@ -156,6 +153,14 @@ document.getElementById("volcano").onchange = () => {
 document.getElementById("resetPoints").onclick = () => {
   favoritePoints = {};
   document.getElementById("selectedPoints").innerHTML = renderSavedPoints();
+  drawGraph();
+}
+
+document.getElementById("minimum_label").innerHTML = minimumValue + " eV";
+
+document.getElementById("minumum").oninput = () => {
+  minimumValue = document.getElementById("minumum").value;
+  document.getElementById("minimum_label").innerHTML = minimumValue + " eV";
   drawGraph();
 }
 
@@ -244,7 +249,6 @@ var renderSavedPoints = () => {
   var point;
   for (var i = 0; i < ids.length; i++) {
     point = favoritePoints[ids[i]];
-    console.log(point)
     innerHTML += ("<li>" + selectFormula(point) + "</li>");
   }
   if (innerHTML === "") {
@@ -338,7 +342,7 @@ var drawGraph = () => {
     .attr("y", 0)
     .attr("width", 20)
     .attr("height", "100%")
-    .attr("fill", "yellow")
+    .attr("fill", "#caee86")
 
 
   var x = d3.scale.linear()
