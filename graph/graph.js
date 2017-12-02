@@ -27,7 +27,8 @@ var selectY = v => {
     return Math.abs(selectX(v) + v.offset/3);
   }
 };
-var selectFormula = v => v["processed_data"]["calculation_info"]["formula"];
+var selectFormula = v => v["atoms"]["symbol_counts"];
+var selectFormulaName = v => v["processed_data"]["calculation_info"]["formula"];
 var selectMPID    = v => v["processed_data"]["calculation_info"]["mpid"];
 var selectMiller  = v => String(v["processed_data"]["calculation_info"]["miller"][0]);
 var selectTop     = v => v["processed_data"]["calculation_info"]["top"];
@@ -66,6 +67,45 @@ var updateFilter = (filterName, select) => {
       if (filterName === "neighbor_coord") {
         if (select(v)) return select(v).includes(text);
         else return false;
+      } else if (filterName === "formula") {
+        var chemicals = text.split(",").map(v => v.trim());
+        var chemicalsToCheck = {};
+        chemicals.forEach(c => {
+          if (c.includes(">")) {
+            chemicalsToCheck[c.substring(0, c.indexOf(">"))] = {
+              "count": parseInt(c.substring(c.indexOf(">")+1)), 
+              "check": function(a, b) { return a > b; }
+            }
+          } else if (c.includes("<")) {
+            chemicalsToCheck[c.substring(0, c.indexOf("<"))] = {
+              "count": parseInt(c.substring(c.indexOf("<")+1)), 
+              "check": function(a, b) { console.log(a, b); return a < b; }
+            }
+          } else if (c.includes("=")) {
+            chemicalsToCheck[c.substring(0, c.indexOf("="))] = {
+              "count": parseInt(c.substring(c.indexOf("=")+1)), 
+              "check": function(a, b) { return a === b; }
+            }
+          }
+        })
+        var existingSymbols = select(v);
+        var existingSymbol;
+
+        var chemicalToCheckInfo;
+        var filterRes = true;
+        Object.keys(chemicalsToCheck).forEach(chemicalToCheck => {
+          chemicalToCheckInfo = chemicalsToCheck[chemicalToCheck];
+          if (existingSymbols.hasOwnProperty(chemicalToCheck)) {
+            if (! chemicalToCheckInfo.check(existingSymbols[chemicalToCheck], chemicalToCheckInfo.count)) {
+              filterRes = false;
+            }
+          } else {
+            if (! chemicalToCheckInfo.check(0, chemicalToCheckInfo.count)) {
+              filterRes = false;
+            }
+          }
+        })
+        return filterRes;
       } else {
         return select(v) === text;        
       }
@@ -249,7 +289,7 @@ var renderSavedPoints = () => {
   var point;
   for (var i = 0; i < ids.length; i++) {
     point = favoritePoints[ids[i]];
-    innerHTML += ("<li>" + selectFormula(point) + "</li>");
+    innerHTML += ("<li>" + selectFormulaName(point) + "</li>");
   }
   if (innerHTML === "") {
     innerHTML = "<p>Click on a point to add it to your list.</p>";
@@ -367,8 +407,14 @@ var drawGraph = () => {
     .attr('class', 'd3-popover')
     .offset([-10, 0])
     .html(d => {
+      var image_url = "https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + 
+      d._id + + "-" + selectFormulaName(d) + "-side.png"
+      console.log(image_url)
       var info = 
-        "<h2>" + selectFormula(d) + "</h2>" + 
+        "<h2>" + selectFormulaName(d) + "</h2>" + 
+        "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + '597b9bea899e208675296dff' + "-CO-side.png'>" + 
+        // "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/'" + 
+          // d._id + + "-" + selectFormulaName(d) + ".png'>" +
         "<p><strong>MPID:</strong> " + selectMPID(d) + "</p>" + 
         "<p><strong>Miller Index:</strong> " + selectMiller(d) + "</p>" + 
         "<p><strong>Top:</strong> " + selectTop(d) + "</p>" + 

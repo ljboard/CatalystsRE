@@ -13,9 +13,9 @@ fs.readFile('./data.json', 'utf8', function (err, input_data) {
 const info = {
     graph_title: 'Catalyst Efficiency',
     parameters: [
-        {"name": "dE(O)", value: 2},
-        {"name": "dE(CO)", value: 0},
-        {"name": "dE(OH)", value: -1},
+        {"name": "dE(O)", value: 0},
+        {"name": "dE(CO)", value: 1},
+        {"name": "dE(OH)", value: 0},
         {"name": "dE(H)", value: 0},
         {"name": "dE(C)", value: 0},
     ], 
