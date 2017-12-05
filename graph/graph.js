@@ -14,6 +14,7 @@ for (var i = 0; i < data.length; i++) {
   allColors.push("rgb(" + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + ")")
 }
 var favoritePoints = {};
+var graphRange = [-3, 3];
 
 /*************************************************************/
 //                         SELECTORS
@@ -22,7 +23,7 @@ var selectEnergy  = v => { if (v["results"]) return v["results"]["energy"]; }
 var selectX = v => selectEnergy(v) % 3;
 var selectY = v => {
   if (!volcanoMode) {
-    return v.offset + 2;
+    return v.offset;
   } else {
     return Math.abs(selectX(v) + v.offset/3);
   }
@@ -30,8 +31,8 @@ var selectY = v => {
 var selectFormula = v => v["atoms"]["symbol_counts"];
 var selectFormulaName = v => v["processed_data"]["calculation_info"]["formula"];
 var selectMPID    = v => v["processed_data"]["calculation_info"]["mpid"];
-var selectMiller  = v => String(v["processed_data"]["calculation_info"]["miller"][0]);
-var selectTop     = v => v["processed_data"]["calculation_info"]["top"];
+var selectMiller  = v => v["processed_data"]["calculation_info"]["miller"];
+var selectTop     = v => String(v["processed_data"]["calculation_info"]["top"]);
 var selectNextnearestcoordination = v => v["processed_data"]["fp_final"]["nextnearestcoordination"];
 var selectFmax    = v => String(v["results"]["fmax"]);
 var selectNeighborCoord = v => {
@@ -46,8 +47,6 @@ var selectAdsorbates   = v => // returns a list
 //                         FILTERS
 /*************************************************************/
 var filters = {};
-var getXValues       = data => Array.from(new Set(data.map(v => selectX(v))));
-var getYValues       = data => Array.from(new Set(data.map(v => selectY(v))));
 var getFormulas      = data => Array.from(new Set(data.map (v => selectFormula(v))));
 var getMPID          = data => Array.from(new Set(data.map (v => selectMPID(v))));
 var getMiller        = data => Array.from(new Set(data.map (v => selectMiller(v))));
@@ -74,17 +73,17 @@ var updateFilter = (filterName, select) => {
           if (c.includes(">")) {
             chemicalsToCheck[c.substring(0, c.indexOf(">"))] = {
               "count": parseInt(c.substring(c.indexOf(">")+1)), 
-              "check": function(a, b) { return a > b; }
+              "check": (a, b) => a > b
             }
           } else if (c.includes("<")) {
             chemicalsToCheck[c.substring(0, c.indexOf("<"))] = {
               "count": parseInt(c.substring(c.indexOf("<")+1)), 
-              "check": function(a, b) { console.log(a, b); return a < b; }
+              "check": (a, b) => a < b
             }
           } else if (c.includes("=")) {
             chemicalsToCheck[c.substring(0, c.indexOf("="))] = {
               "count": parseInt(c.substring(c.indexOf("=")+1)), 
-              "check": function(a, b) { return a === b; }
+              "check": (a, b) => a === b
             }
           }
         })
@@ -106,6 +105,18 @@ var updateFilter = (filterName, select) => {
           }
         })
         return filterRes;
+      } else if (filterName === "top") {
+        var elem = document.getElementById("top_input");
+        return select(v) === (elem.options[elem.selectedIndex].value)
+      } else if (filterName === "miller") {
+        var miller_indices = text.split(",").map(v => Number(v.trim()));
+        var selected_indices = select(v);
+        for (var i = 0; i < selected_indices.length; i++) {
+          if (miller_indices[i] !== selected_indices[i]) {
+            return false;
+          }
+        }
+        return true;
       } else {
         return select(v) === text;        
       }
@@ -147,15 +158,11 @@ var setFilterEvents = () => {
   }
   
   document.getElementById("top").onclick = () => {
-    if(document.getElementById("top").checked) {
-      var filterTop = data => { return data.filter(v => {
-        return selectTop(v)
-      }); };
-      filters["top"] = filterTop;
-    } else {
-      filters["top"] = null;
-    }
-    drawGraph();
+    updateFilter("top", selectTop);
+  }
+    
+  document.getElementById("top_input").oninput = () => {
+    updateFilter("top", selectTop);
   }
   
   document.getElementById("coordination").onclick = () => {
@@ -204,6 +211,29 @@ document.getElementById("minumum").oninput = () => {
   drawGraph();
 }
 
+document.getElementById("low").oninput = () => {
+  value = document.getElementById("low").value;
+  if (!isNaN(value)) {
+    if (value > graphRange[1] - .05) {
+      value = graphRange[1] - .05;
+    }
+    document.getElementById("low_label").innerHTML = "low: " + value + " eV";
+    graphRange[0] = Number(value);
+    drawGraph(); 
+  }
+}
+
+document.getElementById("high").oninput = () => {
+  value = document.getElementById("high").value;
+  if (!isNaN(value)) {
+    if (value < graphRange[0] + .05) {
+      value = graphRange[0] + .05;
+    }
+    document.getElementById("high_label").innerHTML = "high: " + value + " eV";
+    graphRange[1] = Number(value);
+    drawGraph();
+  }
+}
 
 /*************************************************************/
 //                         COLORS
@@ -350,15 +380,26 @@ var drawGraph = () => {
   const width = window.innerWidth - 320;
   const height = window.innerHeight - 20;
 
-  const xRange = [
-    d3.min(currentData, d => selectX(d)) - .2,
-    d3.max(currentData, d => selectX(d)) + .2
+  var xRange = [
+    Math.floor(d3.min(currentData, d => selectX(d))),
+    Math.ceil(d3.max(currentData, d => selectX(d)))
   ];
 
-  const yRange = [
+  document.getElementById("high").min = xRange[0];
+  document.getElementById("low").min = xRange[0];      
+  document.getElementById("low").value = graphRange[0];      
+  
+  document.getElementById("high").max = xRange[1];
+  document.getElementById("low").max = xRange[1];      
+  document.getElementById("high").value = graphRange[1];      
+  
+  xRange = graphRange;
+
+  var yRange = [
     d3.min(currentData, d => selectY(d)),
     d3.max(currentData, d => selectY(d)) + .2
   ];
+  if (!volcanoMode) yRange = [0, 1];
 
   var scaleX = x => {
     var scaledRange = xRange[1]-xRange[0];
@@ -409,7 +450,6 @@ var drawGraph = () => {
     .html(d => {
       var image_url = "https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + 
       d._id + + "-" + selectFormulaName(d) + "-side.png"
-      console.log(image_url)
       var info = 
         "<h2>" + selectFormulaName(d) + "</h2>" + 
         "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + '597b9bea899e208675296dff' + "-CO-side.png'>" + 

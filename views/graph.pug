@@ -33,7 +33,15 @@ body
             ="Minimum: "
             span#minimum_label=""
             input#minumum(type="range", min="-3", max="3", step="0.01", value="1.2")
-    
+          div.filter_option
+            ="Low: "
+            span#low_label=""
+            input#low(type="range", step="0.01")
+          div.filter_option
+            ="High: "
+            span#high_label=""
+            input#high(type="range", step="0.01")
+
       div.box
         h3(style="cursor: pointer; user-select: none",
             onclick="document.getElementsByClassName('inner-box')[1].classList.toggle('hidden');\
@@ -46,7 +54,7 @@ body
               span.glyphicon.glyphicon-pencil.pull-right
             div.filter_option
               input#formula(type="checkbox", name="formula", checked=filters["formula"])
-              ="    chemical formula"
+              ="    chemical symbols"
               input.pull-right(type="radio", name="color", value="formula")
               input#formula_input.hidden(type="text", name="chem_formula_input")
             div.filter_option
@@ -61,7 +69,10 @@ body
               input#miller_input.hidden(type="text", name="miller_input")
             div.filter_option
               input#top(type="checkbox", name="top", checked=filters["top"])
-              ="    Top"
+              ="    Top     "
+              select#top_input.hidden
+                option(value="true")="True"
+                option(value="false")="False"
               input.pull-right(type="radio", name="color", value="top")
             div.filter_option
               input#coordination(type="checkbox", name="coordination", checked=filters["coordination"])
