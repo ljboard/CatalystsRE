@@ -1,0 +1,98 @@
+body {
+  overflow: hidden;
+}
+*, div {
+  font-family: "HelveticaNeue-Light"
+}
+h1, h2, h3, h4 {
+  margin: 0 !important;
+  padding: 0;
+}
+
+#title {
+  padding: 20px;
+  text-align: left;
+  font-size: 50px;
+  font-weight: lighter;
+  color: white;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+}
+
+.filter_option {
+  margin: 10px;
+  padding: 5px;
+  box-shadow: 0px 0px 5px 1px #48575f
+}
+
+.inner-box {
+  text-align: left
+}
+
+.innerbox-header {
+  height: 30px;
+  margin: 10px 20px -15px 20px;
+}
+
+.box {
+  padding: 15px;
+  color: white;
+  margin-bottom: 5px
+}
+
+.box:hover {
+  background-color: #6c828d;
+}
+
+h3 {
+  font-size: 20px !important;
+  width: 100%;
+}
+
+.opened h3 {
+  color: #ACD269 !important;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.d3-tip {
+  background-color: #272727;
+  color: white;
+  padding: 10px;
+}
+
+.d3-popover {
+  background-color: white;
+  border: 1px solid #48575f;
+  box-shadow: 0px 0px 50px 10px #48575f65;
+  padding: 10px;
+}
+
+#sidebar {
+  background-color: #566f7c;
+  width: 300px;
+  height: 100%
+}
+
+#sidebar-top {
+  background-color: #48575f;
+}
+
+.opened {
+  background-color: #6c828d;
+}
+
+#resetPoints {
+  cursor: pointer;
+  text-align: right;
+}
+
+#resetPoints:hover {
+  color: #ACD269
+}

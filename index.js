@@ -1,12 +1,18 @@
-const express = require('express')
-const app = express()
-app.set('views', './views')
-app.set('view engine', 'pug')
+const express = require('express');
+const morgan = require('morgan');
+const fs = require('fs');
+const app = express();
+let data;
+
+app.set('views', './views');
+app.set('view engine', 'pug');
+
+app.use(morgan('tiny'));
 app.use(express.static('graph'));
-var fs = require('fs');
-var data;
+// app.use(express.static(__dirname + '/public'));
+
 fs.readFile('./data.json', 'utf8', function (err, input_data) {
-  if (err) throw err;
+  if (err) {throw err;}
   data = JSON.parse(input_data);
 });
 
@@ -18,7 +24,7 @@ const info = {
         {"name": "dE(OH)", value: 0},
         {"name": "dE(H)", value: 0},
         {"name": "dE(C)", value: 0},
-    ], 
+    ],
     filters: {
         chem_formula: false,
         adsorbate: false,
@@ -29,21 +35,27 @@ const info = {
         neighbor_coord: false,
         fmax: false,
     }
-}
+};
 
-var setEquation = () => {
+const setEquation = () => {
     const equationBase = "dEG =";
     let equation = "";
-    for (var i = 0; i < info.parameters.length; i++) {
+    for (let i = 0; i < info.parameters.length; i++) {
         let parameter = info.parameters[i];
         let v = parameter.value;
         if (v !== 0) {
             equation += (" ");
-            if (v === 1) equation += (" + ");
-            else if (v === -1) equation += (" - ");
-            if (v > 1) equation += (" + " + v);
-            if (v < -1) equation +=(" - " + (-1 * v));
-            equation += parameter.name
+            if (v === 1) {
+                equation += (" + ");
+            } else if (v === -1) {
+                equation += (" - ");
+            } else if (v > 1) {
+                equation += (" + " + v);
+
+            } else if (v < -1) {
+                equation +=(" - " + (-1 * v));
+            }
+            equation += parameter.name;
         }
 
     }
@@ -51,34 +63,39 @@ var setEquation = () => {
         return "No Equation";
     }
     return equationBase + equation.substring(3);
-}
+};
 
-var setParameters = query_result => {
-    var parameter_name;
-    var prev_value;
-    var parameter_value;
-    for (var i = 0; i < info.parameters.length; i++) {
+const setParameters = query_result => {
+    let parameter_name;
+    let prev_value;
+    let parameter_value;
+    for (let i = 0; i < info.parameters.length; i++) {
         parameter_name = info.parameters[i].name;
         prev_value = query_result[parameter_name];
         parameter_value = (typeof(prev_value) === String) ? prev_value : prev_value;
         info.parameters[i].value = prev_value;
     }
-}
+};
 
-var setFilters = query_result => {
+const setFilters = query_result => {
     info.filters = Object.assign(info.filters, query_result);
-}
+};
 
-app.get('/graph*', function(req, res){ 
-    if (Object.keys(req.query).length === 0) {} 
-    else if (req.query.chem_formula) {
-        setFilters(req.query);        
-    } else {
-        setParameters(req.query);
+app.get('/graph*', function(req, res){
+    if (Object.keys(req.query).length !== 0) {
+        if (req.query.chem_formula) {
+            setFilters(req.query);
+        } else {
+            setParameters(req.query);
+        }
     }
-    info.equation = setEquation()
-    res.render('graph', Object.assign(info, {data: data}))
-}); 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-})
+    info.equation = setEquation();
+    res.render('graph', Object.assign(info, {data: data}));
+});
+
+app.listen(3005, function() {
+    console.log('App listening on port 3000');
+});
+
+require('./lib/elastic/start').init();
+
