@@ -1,10 +1,16 @@
 body {
     overflow: hidden;
 }
-*, div {
-    font-family: "HelveticaNeue-Light"
+
+*,
+div {
+    font-family: "HelveticaNeue-Light";
 }
-h1, h2, h3, h4 {
+
+h1,
+h2,
+h3,
+h4 {
     margin: 0 !important;
     padding: 0;
 }
@@ -17,7 +23,8 @@ h1, h2, h3, h4 {
     color: white;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
     width: 20px;
     height: 20px;
     padding-right: 10px;
@@ -30,7 +37,7 @@ input[type="text"] {
 .filter_option {
     margin: 10px 0;
     padding: 5px;
-    box-shadow: 0px 0px 5px 1px #48575f    
+    box-shadow: 0px 0px 5px 1px #48575f
 }
 
 .inner-box {
@@ -49,7 +56,7 @@ input[type="text"] {
 }
 
 .box:hover {
-    background-color: #6c828d;    
+    background-color: #6c828d;
 }
 
 h3 {
@@ -58,7 +65,7 @@ h3 {
 }
 
 .opened h3 {
-    color: rgb(202, 238, 134) !important;    
+    color: rgb(202, 238, 134) !important;
 }
 
 input[type="checkbox"] {
@@ -74,8 +81,8 @@ input[type="checkbox"] {
 .d3-popover {
     background-color: white;
     border: 1px solid #48575f;
-    box-shadow: 0px 0px 50px 10px #48575f65;    
-    padding: 10px;    
+    box-shadow: 0px 0px 50px 10px #48575f65;
+    padding: 10px;
 }
 
 #sidebar {
@@ -94,14 +101,15 @@ input[type="checkbox"] {
 
 #resetPoints {
     cursor: pointer;
-    text-align: right;    
+    text-align: right;
 }
 
 #resetPoints:hover {
-    color: #ACD269    
+    color: #ACD269
 }
 
-#low, #high {
+#low,
+#high {
     width: 100%;
     background-color: #92aab6;
     /* border: 1px solid #5c727e; */

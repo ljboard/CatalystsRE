@@ -1,12 +1,13 @@
 {
-  "name": "catalysts-elastic",
-  "version": "1.0.0",
-  "description": "elastic connector for catalysts hci project",
+  "name": "catalysts-cmu-hci",
+  "version": "0.0.2",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
   },
-  "author": "",
+  "author": "Elizabeth Board, Bernard Decelian, Tanvi Shah",
   "license": "ISC",
   "dependencies": {
     "accepts": "1.3.4",
@@ -188,7 +189,6 @@
     "wrappy": "1.0.2",
     "yargs": "3.10.0"
   },
-  "devDependencies": {},
   "directories": {
     "lib": "lib"
   }

@@ -1,7 +1,7 @@
-var Structure = require('../models/structure');
-var Graph = require('../models/graph');
-var ElasticSearch = require('elasticsearch');
-var es_client = new ElasticSearch.Client({host: 'localhost:9200', log: 'trace'});
+// var Structure = require('../models/structure');
+// var Graph = require('../models/graph');
+const ElasticSearch = require('elasticsearch');
+const es_client = new ElasticSearch.Client({host: 'localhost:9200', log: 'trace'});
 
 exports.init = function(app) {
     app.get("/db/:query?/", queryHandler);
@@ -23,7 +23,7 @@ function sendQuery(req, res, index=false) {
   let query = !index ? generateQuery(req) : { index: 'structures', q: '*:*'};
   es_client.search(query).then(
     function (response) {
-      var hits = response.hits.hits;
+      let hits = response.hits.hits;
       res.render('results', {hits: hits});
       console.log(hits);
     },
