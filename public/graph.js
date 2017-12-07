@@ -24,7 +24,7 @@ let graphRange = [-3, 3];
 /*************************************************************/
 //                         SELECTORS
 /*************************************************************/
-let selectEnergy = v => { if (v.results){ return v.results.energy; }};
+let selectEnergy = v => { if (v){ return v.energy; }};
 let selectX = v => selectEnergy(v) % 3;
 let selectY = v => {
   if (!volcanoMode) {
@@ -33,19 +33,19 @@ let selectY = v => {
     return Math.abs(selectX(v) + v.offset/3);
   }
 };
-let selectFormula = v => v.atoms.symbol_counts;
-let selectFormulaName = v => v.processed_data.calculation_info.formula;
-let selectMPID    = v => v.processed_data.calculation_info.mpid;
-let selectMiller  = v => v.processed_data.calculation_info.miller;
-let selectTop     = v => String(v.processed_data.calculation_info.top);
-let selectNextnearestcoordination = v => v.processed_data.fp_final.nextnearestcoordination;
-let selectFmax    = v => String(v.results.fmax);
+let selectFormula = v => v.formula;
+let selectFormulaName = v => v.formula;
+let selectMPID    = v => v.mpid;
+let selectMiller  = v => v.miller;
+let selectTop     = v => String(v.top);
+let selectNextnearestcoordination = v => v.nextnearestcoordination;
+let selectFmax    = () => "0"; // String(v.fmax);
 let selectNeighborCoord = v => {
-  if (v.processed_data.fp_final.neighborcoord){
-    return v.processed_data.fp_final.neighborcoord;
+  if (v.neighborcoord){
+    return v.neighborcoord;
   }
 };
-let selectCoordination = v => v.processed_data.fp_final.coordination;
+let selectCoordination = v => v.coordination;
 // let selectAdsorbates = v => v.processed_data.calculation_info.adsorbate_names;
 
 /*************************************************************/
