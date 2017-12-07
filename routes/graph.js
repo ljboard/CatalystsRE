@@ -2,7 +2,7 @@ exports.init = function(app) {
     const fs = require('fs');
     let data;
 
-    fs.readFile('./lib/etc/data3.json', 'utf8', function (err, input_data) {
+    fs.readFile('./lib/etc/data2.json', 'utf8', function (err, input_data) {
         if (err) {throw err;}
         data = JSON.parse(input_data);
       });

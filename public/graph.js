@@ -24,7 +24,7 @@ let graphRange = [-3, 3];
 /*************************************************************/
 //                         SELECTORS
 /*************************************************************/
-let selectEnergy = v => { if (v){ return v.energy; }};
+let selectEnergy = v => { if (v && v.energy){ return v.energy; }};
 let selectX = v => selectEnergy(v) % 3;
 let selectY = v => {
   if (!volcanoMode) {
