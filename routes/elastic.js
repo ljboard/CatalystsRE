@@ -1,43 +1,58 @@
 const ElasticSearch = require('elasticsearch');
-const es_client = new ElasticSearch.Client({host: 'localhost:9200', log: 'trace'});
-const getAllRecords = { index: 'structures', q: '*:*'};
+const elasticClient = new ElasticSearch.Client({
+  host: 'localhost:9200',
+  log: 'trace'
+});
 
-exports.init = function(app) {
-  app.get("/import", importHandler);
-  app.get("/db/", queryHandler);
+const getAllRecords = {
+  index: 'structures',
+  q: '*:*',
+  size: 100
 };
 
-// Route Handlers
-// --------------
+exports.init = function (app) {
+  app.get("/import", importHandler);
+  app.get("/db/", queryHandler);
 
-function importHandler(req, res){
-  require('../lib/elastic/mongoDump').init(req, res);
-}
+  // Route Handlers
+  // --------------
 
-function generateQuery(req){
-  let query = getAllRecords;
-  req = req;
-  return query;
-}
-
-function queryHandler(req, res){
-  if(req.query && req.query.length){
-    sendQuery(req, res, getAllRecords);
-  }else{
-    sendQuery(req, res, generateQuery(req));
+  function importHandler(req, res) {
+    require("./lib/elastic/import").init(elasticClient);
+    res.send("");
   }
-}
 
-function sendQuery(req, res, query=getAllRecords) {
-  es_client.search(query).then(successCallback, errorCallback);
-}
+  function queryHandler(req, res) {
+    let query = generateQuery(req);
+    sendQuery(req, res, query);
+  }
 
-function successCallback(response){
-    let hits = response.hits.hits;
-    response.render('results', {hits: hits});
-    console.log(hits);
-}
+  function generateQuery(req) {
+    return getAllRecords;
+  }
 
-function errorCallback(err) {
-    console.trace(err.message);
-}
+  function sendQuery(req, res, query) {
+    elasticClient.search(query, function (error, data) {
+      if (error) {
+        console.log(error);
+      } else {
+        successCallback(req, res, app, resultsArray(data));
+      }
+    });
+  }
+
+  function successCallback(req, res, app, data) {
+    require('./reGraph.js').reGraph(req, res, app, data);
+  }
+
+  function resultsArray(data) {
+    data = data.hits.hits;
+    console.log(data.length);
+    let results = [];
+    for (let i = 0; i < data.length; i++) {
+      results.push(data[i]["_source"]);
+    }
+    return results;
+  }
+
+};

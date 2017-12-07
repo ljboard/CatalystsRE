@@ -1,11 +1,4 @@
-exports.init = function(app) {
-    const fs = require('fs');
-    let data;
-
-    fs.readFile('./lib/etc/data2.json', 'utf8', function (err, input_data) {
-        if (err) {throw err;}
-        data = JSON.parse(input_data);
-      });
+exports.init = function(app, data) {
 
     const info = {
         graph_title: 'Catalyst Efficiency',
@@ -87,5 +80,7 @@ exports.init = function(app) {
     app.get('/*', graphGenerator);
 
 };
+
+
 
 

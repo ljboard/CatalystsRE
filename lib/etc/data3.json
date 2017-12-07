@@ -1,4 +1,9 @@
 [{
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Fe-Fe-Si-Si-Si-Si-Si-Si-Si",
     "mpid": "mp-20738",
     "catalog?": false,
@@ -11,6 +16,11 @@
     "formula": "CFe16OSi32",
     "coordination": "Si-Si"
 }, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Cu",
     "mpid": "mp-30594",
     "catalog?": false,
@@ -22,8 +32,12 @@
     "neighborcoord": ["Cu:Cu-Cu-Cu-Cu-Cu-Cu-Pd-Pd"],
     "formula": "CCu16OPd4",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Ga-Ga-Ga-Ga-Ga-Ir-Ir-Ir-Ir-Ir-Ir-Ir-Ir",
     "mpid": "mp-11388",
     "catalog?": false,
@@ -35,8 +49,12 @@
     "neighborcoord": ["Ir:Ga-Ga-Ga-Ga-Ir-Ir-Ir-Ir"],
     "formula": "CGa12Ir12O",
     "coordination": "Ir"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Sn-Sn-Sn-Sn-Sn-Sn",
     "mpid": "mp-10598",
     "catalog?": false,
@@ -48,8 +66,12 @@
     "neighborcoord": ["Cu:Cu-Sn-Sn-Sn-Sn"],
     "formula": "CCu12OSn12",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Si",
     "mpid": "mp-972828",
     "catalog?": false,
@@ -61,8 +83,12 @@
     "neighborcoord": ["Cu:Cu-Cu-Cu-Cu-Cu-Cu-Si-Si"],
     "formula": "CCu24OSi8",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-Al-Al-Ni-Ni-Ni",
     "mpid": "mp-622209",
     "catalog?": false,
@@ -74,8 +100,12 @@
     "neighborcoord": ["Ni:Al-Al-Al-Al-Al"],
     "formula": "CAl36Ni12O",
     "coordination": "Ni"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-Al-Al-Al",
     "mpid": "mp-985825",
     "catalog?": false,
@@ -87,8 +117,12 @@
     "neighborcoord": ["Al:Al-Al-Al-Al-Al-Cu-Cu", "Al:Al-Al-Al-Al-Al-Cu-Cu"],
     "formula": "CAl18Cu6O",
     "coordination": "Al-Al"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu",
     "mpid": "mp-12802",
     "catalog?": false,
@@ -100,8 +134,12 @@
     "neighborcoord": ["Cu:Al-Al-Al-Cu-Cu-Cu-Cu-Cu", "Cu:Al-Al-Al-Cu-Cu-Cu-Cu"],
     "formula": "CAl6Cu18O",
     "coordination": "Cu-Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pd-Pd-Pd-Pd-Pd-Pd-Pd-Pd-Pd-Pd-Pd-Pd",
     "mpid": "mp-718",
     "catalog?": false,
@@ -113,8 +151,12 @@
     "neighborcoord": ["Pd:Pd-Pd-Pd-Pd-Pd-Pd-Sn-Sn", "Pd:Pd-Pd-Pd-Pd-Pd-Pd-Sn-Sn", "Pd:Pd-Pd-Pd-Pd-Pd-Pd-Sn-Sn", "Pd:Pd-Pd-Pd-Pd-Pd-Pd-Sn-Sn"],
     "formula": "COPd24Sn8",
     "coordination": "Pd-Pd-Pd-Pd"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pt-Pt-Sn-Sn-Sn-Sn-Sn",
     "mpid": "mp-19856",
     "catalog?": false,
@@ -126,8 +168,12 @@
     "neighborcoord": ["Pt:Pt-Sn-Sn-Sn-Sn", "Pt:Pt-Sn-Sn-Sn-Sn"],
     "formula": "COPt12Sn12",
     "coordination": "Pt-Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu",
     "mpid": "mp-1008555",
     "catalog?": false,
@@ -139,8 +185,12 @@
     "neighborcoord": ["Cu:Al-Al-Cu-Cu-Cu-Cu-Cu"],
     "formula": "CAl10Cu30O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pd-Pd-Pd-Pd-Pd-Sb",
     "mpid": "mp-1769",
     "catalog?": false,
@@ -152,8 +202,12 @@
     "neighborcoord": ["Pd:Pd-Sb-Sb-Sb-Sb"],
     "formula": "COPd16Sb16",
     "coordination": "Pd"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu",
     "mpid": "mp-2258",
     "catalog?": false,
@@ -165,8 +219,12 @@
     "neighborcoord": ["Cu:Au-Au-Cu-Cu-Cu-Cu-Cu"],
     "formula": "CAu8Cu24O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pt-Pt-Sn-Sn-Sn-Sn-Sn-Sn-Sn-Sn-Sn-Sn",
     "mpid": "mp-20662",
     "catalog?": false,
@@ -178,8 +236,12 @@
     "neighborcoord": ["Pt:Sn-Sn-Sn-Sn"],
     "formula": "COPt8Sn32",
     "coordination": "Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Au-Au-A",
     "mpid": "mp-2647",
     "catalog?": false,
@@ -191,8 +253,12 @@
     "neighborcoord": ["Al:Al-Al-Al-Au-A", "Al:Al-Al-Al-Au-Au-A"],
     "formula": "CAl32Au16O",
     "coordination": "Al-Al"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Au-Au-Au-Au-Cu-Cu-Cu-Cu-Cu-Cu-Cu",
     "mpid": "mp-2258",
     "catalog?": false,
@@ -204,8 +270,12 @@
     "neighborcoord": ["Cu:Au-Au-Cu-Cu-Cu-Cu"],
     "formula": "CAu12Cu36O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pt-Pt-Pt-Pt-Pt-Pt-Sb-Sb",
     "mpid": "mp-2845",
     "catalog?": false,
@@ -217,8 +287,12 @@
     "neighborcoord": ["Pt:Pt-Pt-Sb-Sb-Sb-Sb"],
     "formula": "COPt8Sb8",
     "coordination": "Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu",
     "mpid": "mp-1008555",
     "catalog?": false,
@@ -230,8 +304,12 @@
     "neighborcoord": ["Cu:Al-Al-Cu-Cu-Cu-Cu"],
     "formula": "CAl12Cu36O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-Al-Al-Ni-Ni-Ni",
     "mpid": "mp-622209",
     "catalog?": false,
@@ -243,8 +321,12 @@
     "neighborcoord": ["Ni:Al-Al-Al-Al-Al"],
     "formula": "CAl36Ni12O",
     "coordination": "Ni"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-Al-Al-Al-Ni-Ni-Ni",
     "mpid": "mp-622209",
     "catalog?": false,
@@ -256,8 +338,12 @@
     "neighborcoord": ["Ni:Al-Al-Al-Al-Al-Al-Al"],
     "formula": "CAl36Ni12O",
     "coordination": "Ni"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Ga-Ga-Ga-Ga-Pt-Pt-Pt-Pt",
     "mpid": "mp-21400",
     "catalog?": false,
@@ -269,8 +355,12 @@
     "neighborcoord": ["Pt:Ga-Ga-Ga-Ga-Ga-Ga-Pt-Pt"],
     "formula": "CGa24OPt16",
     "coordination": "Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Cu-Cu-Cu-Cu",
     "mpid": "mp-985806",
     "catalog?": false,
@@ -282,8 +372,12 @@
     "neighborcoord": ["Cu:Al-Al-Al-Al-Al"],
     "formula": "CAl32Cu16O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-Al-Al-Ni-Ni-Ni",
     "mpid": "mp-622209",
     "catalog?": false,
@@ -295,8 +389,12 @@
     "neighborcoord": ["Al:Al-Al-Al-Al-Al-Ni"],
     "formula": "CAl36Ni12O",
     "coordination": "Al"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-Al-Re",
     "mpid": "mp-1648",
     "catalog?": false,
@@ -308,8 +406,12 @@
     "neighborcoord": ["Al:Al-Al-Al-Al-Al-Al-Al", "Al:Al-Al-Al-Al-Al-Al-Al-Re"],
     "formula": "CAl24ORe2",
     "coordination": "Al-Al"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Ga-Ga-Ga-Ga-Ga-Ga",
     "mpid": "mp-11359",
     "catalog?": false,
@@ -321,8 +423,12 @@
     "neighborcoord": ["Cu:Cu-Cu-Cu-Ga-Ga-Ga-Ga"],
     "formula": "CCu6Ga12O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Ga-Ga-Ga-Ga-Ga",
     "mpid": "mp-11359",
     "catalog?": false,
@@ -334,8 +440,12 @@
     "neighborcoord": ["Cu:Cu-Cu-Cu-Ga-Ga-Ga-Ga"],
     "formula": "CCu12Ga24O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pd-Pd-Pd-Pd-Pd-Pd-Si-Si",
     "mpid": "mp-389",
     "catalog?": false,
@@ -347,8 +457,12 @@
     "neighborcoord": ["Pd:Pd-Pd-Pd-Si-Si-Si"],
     "formula": "COPd24Si24",
     "coordination": "Pd"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Sb-Sb-Sb-Sb",
     "mpid": "mp-1018100",
     "catalog?": false,
@@ -360,8 +474,12 @@
     "neighborcoord": ["Al:Sb-Sb-Sb", "Al:Al-Al-Sb-Sb-Sb-Sb"],
     "formula": "CAl10OSb10",
     "coordination": "Al-Al"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Rh-Rh-Rh-Rh-Rh-Rh",
     "mpid": "mp-24722",
     "catalog?": false,
@@ -373,8 +491,12 @@
     "neighborcoord": ["Rh:H-H-H"],
     "formula": "CH12ORh12",
     "coordination": "Rh"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Au-Au-A",
     "mpid": "mp-2647",
     "catalog?": false,
@@ -386,8 +508,12 @@
     "neighborcoord": ["Al:Al-Al-Al-Au-Au-A", "Al:Al-Al-Al-Au-Au-A"],
     "formula": "CAl16Au8O",
     "coordination": "Al-Al"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pd-Sn-Sn-Sn-Sn-Sn-Sn-Sn-Sn",
     "mpid": "mp-1371",
     "catalog?": false,
@@ -399,8 +525,12 @@
     "neighborcoord": ["Pd:Pd-Sn-Sn-Sn-Sn-Sn"],
     "formula": "COPd12Sn36",
     "coordination": "Pd"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Ni-Ni-Ni-Ni-Ni-Ni-Si-Si",
     "mpid": "mp-351",
     "catalog?": false,
@@ -412,8 +542,12 @@
     "neighborcoord": ["Ni:Ni-Ni-Ni-Ni-Si-Si-Si", "Ni:Ni-Ni-Ni-Ni-Si-Si-Si"],
     "formula": "CNi16OSi16",
     "coordination": "Ni-Ni"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pt-Pt-Pt-Pt-Pt-Pt-Pt-Pt",
     "mpid": "mp-1025366",
     "catalog?": false,
@@ -425,8 +559,12 @@
     "neighborcoord": ["Pt:Pt-Pt-Pt-Pt-Pt-Sb-Si", "Pt:Pt-Pt-Pt-Pt-Sb-Si"],
     "formula": "COPt25Sb5Si5",
     "coordination": "Pt-Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pt-Pt-Pt-Pt-Pt-Pt-Pt-Pt-Pt-Pt-Pt",
     "mpid": "mp-1025370",
     "catalog?": false,
@@ -438,8 +576,12 @@
     "neighborcoord": ["Pt:In-In-Pt-Pt-Pt-Pt-Pt-Si", "Pt:In-In-Pt-Pt-Pt-Pt-Pt-Si", "Pt:In-In-In-Pt-Pt-Pt-Pt-Si"],
     "formula": "CIn4OPt20Si4",
     "coordination": "Pt-Pt-Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Au-Au-Au-Au-Au-Au-Au-Au-Cu-Cu-Cu-Cu",
     "mpid": "mp-522",
     "catalog?": false,
@@ -451,8 +593,12 @@
     "neighborcoord": ["Cu:Au-Au-Au-Au-Au-Au-Cu"],
     "formula": "CAu10Cu10O",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Au-Au-Au-Au-Au-Au-Au-Sn",
     "mpid": "mp-30418",
     "catalog?": false,
@@ -464,8 +610,12 @@
     "neighborcoord": ["Au:Au-Au-Au-Au-Au-A"],
     "formula": "CAu10OSn2",
     "coordination": "A"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Os-Os-Os-Os-Si-Si-Si-Si-Si",
     "mpid": "mp-16609",
     "catalog?": false,
@@ -477,8 +627,12 @@
     "neighborcoord": ["Os:Si-Si-Si-Si-Si-Si"],
     "formula": "COOs16Si24",
     "coordination": "Os"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Au-Au-Au-Pd-Pd",
     "mpid": "mp-973839",
     "catalog?": false,
@@ -490,8 +644,12 @@
     "neighborcoord": ["Pd:Au-Au-Au-Au-Au-Au-A"],
     "formula": "CAu12OPd4",
     "coordination": "Pd"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Fe-Fe-Fe-Si-Si-Si-Si-Si-Si-Si-Si",
     "mpid": "mp-20738",
     "catalog?": false,
@@ -503,8 +661,12 @@
     "neighborcoord": ["Fe:Fe-Fe-Si-Si-Si-Si"],
     "formula": "CFe6OSi12",
     "coordination": "Fe"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Sn-Sn-Sn",
     "mpid": "mp-1233",
     "catalog?": false,
@@ -516,8 +678,12 @@
     "neighborcoord": ["Cu:Cu-Cu-Sn-Sn-Sn"],
     "formula": "CCu24OSn20",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Ga-Ga-Ga-Ga-Ga-Ga-Pt-Pt-Pt-Pt-Pt-Pt",
     "mpid": "mp-21400",
     "catalog?": false,
@@ -529,8 +695,12 @@
     "neighborcoord": ["Pt:Ga-Ga-Ga-Ga-Ga-Ga"],
     "formula": "CGa18OPt12",
     "coordination": "Pt"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Si-Si-Si-Si-Si-Si-W-W-W-W",
     "mpid": "mp-8939",
     "catalog?": false,
@@ -542,8 +712,12 @@
     "neighborcoord": ["Si:Si-Si-Si-W-W", "Si:Si-Si-Si-W-W-W"],
     "formula": "COSi24W12",
     "coordination": "Si-Si"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Si-Si-Si-Si-Si-W-W-W",
     "mpid": "mp-8939",
     "catalog?": false,
@@ -555,8 +729,12 @@
     "neighborcoord": ["W:Si-Si-Si-Si-Si-Si-Si"],
     "formula": "COSi24W12",
     "coordination": "W"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Cu-Cu-Cu-Cu-Cu-Cu-Cu-Si-Si-Si-Si",
     "mpid": "mp-867317",
     "catalog?": false,
@@ -568,8 +746,12 @@
     "neighborcoord": ["Cu:Cu-Cu-Cu-Cu-Cu-Si-Si"],
     "formula": "CCu36OSi12",
     "coordination": "Cu"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Fe-Fe-Fe-Fe-Si-Si-Si-Si-Si-Si-Si-Si",
     "mpid": "mp-20738",
     "catalog?": false,
@@ -581,8 +763,12 @@
     "neighborcoord": ["Fe:Si-Si-Si-Si-Si"],
     "formula": "CFe6OSi12",
     "coordination": "Fe"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Cu-Pt-Pt-Pt-Pt-Pt-Pt",
     "mpid": "mp-3702",
     "catalog?": false,
@@ -594,8 +780,12 @@
     "neighborcoord": ["Fe:Cu-Pt-Pt-Pt-Pt-Pt-Pt", "Fe:Cu-Pt-Pt-Pt-Pt-Pt-Pt"],
     "formula": "CCu8Fe8OPt16",
     "coordination": "Fe-Fe"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Ir-Ir-Ir-Ir-Ir-Ir-Ir-Ir-Ir-Ir-V",
     "mpid": "mp-865496",
     "catalog?": false,
@@ -607,8 +797,12 @@
     "neighborcoord": ["Ir:Ir-Ir-Ir-Ir-V-V"],
     "formula": "CIr36OV12",
     "coordination": "Ir"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Pd-Pd-Pd-Pd-Pd-Pd-V-V-V-V",
     "mpid": "mp-11549",
     "catalog?": false,
@@ -620,8 +814,12 @@
     "neighborcoord": ["Pd:Pd-Pd-Pd-Pd-Pd-V-V-V", "Pd:Pd-Pd-Pd-Pd-V-V"],
     "formula": "COPd12V6",
     "coordination": "Pd-Pd"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-W-W-W",
     "mpid": "mp-30336",
     "catalog?": false,
@@ -633,8 +831,12 @@
     "neighborcoord": ["W:Al-Al-Al-Al-Al-Al-Al"],
     "formula": "CAl24OW6",
     "coordination": "W"
-},
-{
+}, {
+    "index": {
+        "_index": "structures",
+        "_type": "structure"
+    }
+}, {
     "nextnearestcoordination": "Al-Al-Al-Al-Al-Al-Al-Al-W-W-W",
     "mpid": "mp-30336",
     "catalog?": false,
@@ -646,5 +848,4 @@
     "neighborcoord": ["W:Al-Al-Al-Al-Al-Al-Al"],
     "formula": "CAl24OW6",
     "coordination": "W"
-}
-]
+}]
