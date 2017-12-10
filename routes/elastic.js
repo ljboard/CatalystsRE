@@ -81,6 +81,7 @@ exports.init = function (app) {
       filters.push({ "match": { "coordination":  req.query.coordination }});
     }
     if (req.query.formula){
+      console.log(req.query.formula);
       filters.push({ "match": { "formula":  req.query.formula }});
     }
     if (req.query.catalog){

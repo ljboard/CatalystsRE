@@ -33,6 +33,7 @@ let selectY = v => {
     return Math.abs(selectX(v) + v.offset/3);
   }
 };
+let selectMongoID = v => v.mongo_id.substring(10,34);
 let selectFormula = v => v.formula;
 let selectFormulaName = v => v.formula;
 let selectMPID    = v => v.mpid;
@@ -458,7 +459,7 @@ let drawGraph = () => {
       d._id + "-" + selectFormulaName(d) + "-side.png";
       let info =
         "<h2>" + selectFormulaName(d) + "</h2>" +
-        "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + '597b9bea899e208675296dff' + "-CO-side.png'>" +
+        "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + selectMongoID(d) + "-CO.png'>" +
         // "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/'" +
           // d._id + + "-" + selectFormulaName(d) + ".png'>" +
         "<p><strong>MPID:</strong> " + selectMPID(d) + "</p>" +
