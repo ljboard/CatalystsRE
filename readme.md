@@ -7,3 +7,6 @@
 ### Run:
 * Run `npm start` to start the server.
 * Visit `localhost:3000/graph` in your browser to view the app.
+
+
+For elasticsearch, in a separate terminal tab, go to  (`/CatalystsRE/elasticsearch/bin`) and run `./elasticsearch`
