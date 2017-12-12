@@ -20,6 +20,7 @@ const elasticClient = new elasticsearch.Client({ host: 'localhost:9200', log: 'e
 // ------
 
 require('./routes/elastic').init(app);
+require("./lib/elastic/import").init();
 
 // Start Application
 // -----------------
