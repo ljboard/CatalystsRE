@@ -33,7 +33,7 @@ let selectY = v => {
     return Math.abs(selectX(v) + v.offset/3);
   }
 };
-let selectMongoID = v => v.mongo_id.substring(10,34);
+let selectMongoID = v => v.mongo_id.substring(10,v.mongo_id.length - 2);
 let selectFormula = v => v.formula;
 let selectFormulaName = v => v.formula;
 let selectMPID    = v => v.mpid;
@@ -420,8 +420,8 @@ let drawGraph = () => {
 
   document.getElementById("graph").innerHTML = "";
   let svg = d3.select('#graph')
-    .append('svg')        // create an <svg> element
-    .attr('width', width) // set its dimentions
+    .append('svg')         // create an <svg> element
+    .attr('width', width)  // set its dimentions
     .attr('height', height)
     .attr('margin', 10);
 
@@ -459,7 +459,7 @@ let drawGraph = () => {
       d._id + "-" + selectFormulaName(d) + "-side.png";
       let info =
         "<h2>" + selectFormulaName(d) + "</h2>" +
-        "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + selectMongoID(d) + "-CO.png'>" +
+        "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/" + selectMongoID(d) + ".png'>" +
         // "<img src='https://s3.us-east-2.amazonaws.com/catalyst-thumbnails/'" +
           // d._id + + "-" + selectFormulaName(d) + ".png'>" +
         "<p><strong>MPID:</strong> " + selectMPID(d) + "</p>" +
@@ -525,3 +525,5 @@ let drawGraph = () => {
 };
 
 drawGraph();
+
+//add form handler for #equation_form

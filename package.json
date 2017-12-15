@@ -187,7 +187,8 @@
     "with": "5.1.1",
     "wordwrap": "0.0.2",
     "wrappy": "1.0.2",
-    "yargs": "3.10.0"
+    "yargs": "3.10.0",
+    "nodemon": "^1.13.2"
   },
   "directories": {
     "lib": "lib"
