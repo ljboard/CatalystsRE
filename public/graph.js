@@ -493,7 +493,7 @@ let drawGraph = () => {
       return scaleY(selectY(v)) + 10;
     })
     .attr("r", v => {
-      if (favoritePoints.hasOwnProperty(v._id)) {
+      if (favoritePoints.hasOwnProperty(v.mongo_id)) {
         return 2;
       } else {
         return 5;
@@ -505,8 +505,8 @@ let drawGraph = () => {
     .on("mouseout", popover.hide)
     .on("click", d => {
       popover.hide();
-      if (!favoritePoints.hasOwnProperty(d._id)) {
-        favoritePoints[d._id] = d;
+      if (!favoritePoints.hasOwnProperty(d.mongo_id)) {
+        favoritePoints[d.mongo_id] = d;
       }
       document.getElementById("selectedPoints").innerHTML = renderSavedPoints();
       document.getElementsByClassName('inner-box')[2].classList.remove('hidden');
