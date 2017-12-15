@@ -25,8 +25,8 @@ require('./routes/elastic').init(app);
 // Start Application
 // -----------------
 
-app.listen(3005, function() {
-    // require('./lib/elastic/default').init(app, elasticClient, function(app, data){ require('./routes/graph.js').init(app, data);});
+app.listen(3000, '0.0.0.0', function() {
+    require('./lib/elastic/default').init(app, elasticClient, function(app, data){ require('./routes/graph.js').init(app, data);});
     require("./lib/elastic/start").init(elasticClient);
     console.log('App listening on port 3000');
 });

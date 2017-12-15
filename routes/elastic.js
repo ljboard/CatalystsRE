@@ -18,7 +18,7 @@ exports.init = function (app) {
   // --------------
 
   function importHandler(req, res) {
-    require("./lib/elastic/import").init(elasticClient);
+    require("../lib/elastic/import").init(elasticClient);
     res.send("");
   }
 
