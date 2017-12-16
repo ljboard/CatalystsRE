@@ -1,9 +1,16 @@
 # Catalysts for Renewable Energy
 
-### Setup: 
+### Setup:
 * Make sure you're in the project directory (`/CatalystsRE`)
-* Run `npm install` to install node modules
+* Install [Docker](https://www.docker.com/get-docker)
+* Run  `docker build -t c4g .` to build the docker image.
 
-### Run: 
-* Run `npm start` to start the server. 
-* Visit `localhost:3000/graph` in your browser to view the app. 
+### Run:
+* Run `docker run -it -p 3000:3000 -p 9200:9200 --rm c4g /bin/bash -c "source /home/start.sh"` to start the server in a docker container. this command puts you inside the terminal that runs the script found in (`/CatalystsRE/start.sh`) and exposes the necessary ports to view the application in your browser. Ignore any error messages concerning connection with elasticsearch. (Node may not have given elastic enough time to start fully.)
+
+* To see elasticsearch in your browser, it can be viewed at `localhost:9200`. Ensure that it works before continuing.
+
+* Visit `localhost:3000/import` in your browser to populate elastic with example datapoints. This may be necessary for a graph to load.
+
+* Finally, visit `localhost:3000` in your browser to view the application. Enjoy!
+

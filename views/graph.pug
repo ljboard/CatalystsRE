@@ -1,7 +1,7 @@
 html
   head
     title="Catalyst Efficiency"
-    style 
+    style
       include styles.css
     link(rel="stylesheet",
          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
@@ -11,7 +11,7 @@ html
 body
   script(src="http://d3js.org/d3.v3.min.js", charset="utf-8")
   script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js", charset="utf-8")
-  
+
   div#popup.hidden
   div#sidebar.pull-left
     div#sidebar-top
@@ -48,7 +48,7 @@ body
                       document.getElementsByClassName('box')[1].classList.toggle('opened');")
           ="FILTERS"
         div.inner-box.hidden
-          form(action="/graph", method="GET")
+          form(action="/db", method="GET")
             div.innerbox-header
               span.glyphicon.glyphicon-search.pull-left
               span.glyphicon.glyphicon-pencil.pull-right
@@ -58,7 +58,7 @@ body
               input.pull-right(type="radio", name="color", value="formula")
               input#formula_input.hidden(type="text", name="chem_formula_input")
             div.filter_option
-              input#mpid(type="checkbox", name="mpid", checked=filters["mpid"])          
+              input#mpid(type="checkbox", name="mpid", checked=filters["mpid"])
               ="    MPID"
               input.pull-right(type="radio", name="color", value="mpid")
               input#mpid_input.hidden(type="text", name="mpid_input")
@@ -110,7 +110,7 @@ body
           span(
             style="font-family: monospace; cursor: pointer; user-select: none"
           )=equation
-          form#equation_form.form-horizontal(action="/graph", method="GET")
+          form#equation_form.form-horizontal(action="/db", method="GET")
             div.row(style="text-align: center")
               div.col-md-5
                 h3="dE"

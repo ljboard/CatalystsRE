@@ -1,115 +1,121 @@
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
-*, div {
-    font-family: "HelveticaNeue-Light"
+
+*,
+div {
+  font-family: "HelveticaNeue-Light";
 }
-h1, h2, h3, h4 {
-    margin: 0 !important;
-    padding: 0;
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 !important;
+  padding: 0;
 }
 
 #title {
-    padding: 20px;
-    text-align: left;
-    font-size: 50px;
-    font-weight: lighter;
-    color: white;
+  padding: 20px;
+  text-align: left;
+  font-size: 50px;
+  font-weight: lighter;
+  color: white;
 }
 
-input[type="checkbox"], input[type="radio"] {
-    width: 20px;
-    height: 20px;
-    padding-right: 10px;
+input[type="checkbox"],
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
 }
 
 input[type="text"] {
-    color: black
+  color: black
 }
 
 .filter_option {
-    margin: 10px 0;
-    padding: 5px;
-    box-shadow: 0px 0px 5px 1px #48575f    
+  margin: 10px 0;
+  padding: 5px;
+  box-shadow: 0px 0px 5px 1px #48575f;
 }
 
 .inner-box {
-    text-align: left
+  text-align: left
 }
 
 .innerbox-header {
-    height: 30px;
-    margin: 10px 10px -15px 10px;
+  height: 30px;
+  margin: 10px 10px -15px 10px;
 }
 
 .box {
-    padding: 15px;
-    color: white;
-    margin-bottom: 5px
+  padding: 15px;
+  color: white;
+  margin-bottom: 5px
 }
 
 .box:hover {
-    background-color: #6c828d;    
+  background-color: #6c828d;
 }
 
 h3 {
-    font-size: 20px !important;
-    width: 100%;
+  font-size: 20px !important;
+  width: 100%;
 }
 
 .opened h3 {
-    color: rgb(202, 238, 134) !important;    
+  color: rgb(202, 238, 134) !important;
 }
 
 input[type="checkbox"] {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .d3-tip {
-    background-color: #272727;
-    color: white;
-    padding: 10px;
+  background-color: #272727;
+  color: white;
+  padding: 10px;
 }
 
 .d3-popover {
-    background-color: white;
-    border: 1px solid #48575f;
-    box-shadow: 0px 0px 50px 10px #48575f65;    
-    padding: 10px;    
+  background-color: white;
+  border: 1px solid #48575f;
+  box-shadow: 0 0 50px 10px #48575f65;
+  padding: 10px;
 }
 
 #sidebar {
-    background-color: #566f7c;
-    width: 315px;
-    height: 100%
+  background-color: #566f7c;
+  width: 315px;
+  height: 100%;
 }
 
 #sidebar-top {
-    background-color: #3c4a52;
+  background-color: #3c4a52;
 }
 
 .opened {
-    background-color: #6c828d;
+  background-color: #6c828d;
 }
 
 #resetPoints {
-    cursor: pointer;
-    text-align: right;    
+  cursor: pointer;
+  text-align: right;
 }
 
 #resetPoints:hover {
-    color: #ACD269    
+  color: #ACD269;
 }
 
-#low, #high {
-    width: 100%;
-    background-color: #92aab6;
-    /* border: 1px solid #5c727e; */
-    border: none;
-    /* box-shadow: 0px 0px 5px 1px #48575f     */
+#low,
+#high {
+  width: 100%;
+  background-color: #92aab6;
+  border: none;
 }
 
 select {
-    margin-right: 5px;
-    color: black !important;
+  margin-right: 5px;
+  color: black !important;
 }
