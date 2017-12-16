@@ -13,6 +13,7 @@ const getAllRecords = {
 exports.init = function (app) {
   app.get("/import", importHandler);
   app.get("/db", queryHandler);
+  app.get("/", queryHandler);
 
   // Route Handlers
   // --------------
